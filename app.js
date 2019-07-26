@@ -33,7 +33,7 @@ app.use(shopRoutes);
 app.use(errorController.get404);
 
 mongoose
-  .connect('mongodb://tester:test1234@ds351987.mlab.com:51987/node-commerce-mongodb', { useNewUrlParser: true })
+  .connect('mongodb://tester:test1234@ds143449.mlab.com:43449/node-commerce-mongodb-mongoose', { useNewUrlParser: true })
   .then(result => {
     app.listen(3006);
     console.log('Connected!');
