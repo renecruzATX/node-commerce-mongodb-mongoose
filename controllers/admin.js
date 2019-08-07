@@ -18,6 +18,7 @@ exports.postAddProduct = (req, res, next) => {
     price: price, 
     description: description, 
     imageUrl: imageUrl, 
+    userId: req.user
   });
 
   product
@@ -39,7 +40,7 @@ exports.getEditProduct = (req, res, next) => {
   const prodId = req.params.productId;
   Product.findById(prodId)
     .then(product => {
-      if (!product) {
+      if (!product) { 
         return res.redirect('/');
       }
       res.render('admin/edit-product', { 
