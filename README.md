@@ -1,1 +1,1 @@
-# node-commerce-project
+# node-commerce-project-mongodb-mongoose
