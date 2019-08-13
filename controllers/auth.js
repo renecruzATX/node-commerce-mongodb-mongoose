@@ -1,4 +1,5 @@
 const crypto = require('crypto');
+require('dotenv').config();
 
 const bcrypt = require('bcryptjs');
 const nodemailer = require('nodemailer');
@@ -8,7 +9,7 @@ const User = require('../models/user');
 
 const transporter = nodemailer.createTransport(sendgridTransport({
     auth: {
-        api_key: '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'
+        api_key: process.env.SENDGRID_API
     }
 }));
 

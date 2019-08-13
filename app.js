@@ -1,4 +1,5 @@
 const path = require('path');
+require('dotenv').config();
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -11,11 +12,9 @@ const flash = require('connect-flash');
 const errorController = require('./controllers/error');
 const User = require('./models/user');
 
-const MONGODB_URI = 'mongodb://tester:test1234@ds143449.mlab.com:43449/node-commerce-mongodb-mongoose';
-
 const app = express();
 const store = new MongoDBStore({
-  uri: MONGODB_URI,
+  uri: process.env.MONGODB_URI,
   collection: 'sessions'
 });
 const csrfProtection = csrf();
@@ -65,11 +64,11 @@ app.use(authRoutes);
 app.use(errorController.get404);
 
 mongoose
-  .connect(MONGODB_URI, { useNewUrlParser: true })
+  .connect(process.env.MONGODB_URI, { useNewUrlParser: true })
   .then(result => {    
     app.listen(3006); 
     console.log('Connected!');
   })
-  .catch(err => {
+  .catch(err => { 
     console.log(err); 
   });
