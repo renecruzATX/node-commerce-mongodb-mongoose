@@ -40,7 +40,7 @@ router.post(
                 });
         })
         .normalizeEmail(),
-    body('password')
+    body('password', 'Please enter a password with only numbers and text and longer than 5 characters.')
         .isLength({min: 5})
         .isAlphanumeric()
         .trim(),
